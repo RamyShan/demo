@@ -35,3 +35,6 @@ if __name__ == "__main__":
     graph.add_edge(3, 4) 
   
     graph.print_graph() 
+
+    graph.print_graph() 
+
