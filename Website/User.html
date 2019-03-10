@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JobHub</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+</head>
+
+<script src="index.js"></script>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#myPage">JobHub</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="logged"></li>
+                    <li><a onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="images/a.jpg" width="1200" height="700">
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/b.jpg" width="1200" height="700">
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/c.jpg" width="1200" height="700">
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div id="login" class="container text-center">
+        <h3>JobHub</h3>
+        <p><em>The Place for your Ideal JOB</em></p>
+    </div>
+
+
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Collapsible list group</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <ul class="list-group">
+                    <li class="list-group-item">One</li>
+                    <li class="list-group-item">Two</li>
+                    <li class="list-group-item">Three</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
+        <p>This is footer part <a href="#" data-toggle="tooltip" title="Visit w3schools">Click Me</a></p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize Tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        })
+    </script>
+
+    <script>
+        // window.onload = alert(localStorage.getItem("storageName"));
+        $(document).ready(function () {
+            console.log(sessionStorage.getItem("storageName"))
+            const a = sessionStorage.getItem("storageName");
+            if (a === null) {
+                window.location.href = 'index.html';
+                alert("Login first")
+            }
+            else {
+                document.getElementById("logged").innerHTML = `<a href="#">Welcome ${a}</a>`
+            }
+        })
+    </script>
+
+
+    <script>
+        $(document).ready(
+            function () {
+                // Add smooth scrolling to all links in navbar + footer link
+                $(".navbar a, footer a[href='#myPage']").on('click',
+                    function (event) {
+                        // Make sure this.hash has a value before overriding default behavior
+                        if (this.hash !== "") {
+                            // Prevent default anchor click behavior
+                            event.preventDefault();
+
+                            // Store hash
+                            var hash = this.hash;
+
+                            // Using jQuery's animate() method to add smooth page scroll
+                            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                            $('html, body').animate({
+                                scrollTop: $(hash).offset().top
+                            }, 900, function () {
+
+                                // Add hash (#) to URL when done scrolling (default click behavior)
+                                window.location.hash = hash;
+                            });
+                        } // End if
+                    });
+
+                $(window).scroll(function () {
+                    $(".slideanim").each(function () {
+                        var pos = $(this).offset().top;
+
+                        var winTop = $(window).scrollTop();
+                        if (pos < winTop + 600) {
+                            $(this).addClass("slide");
+                        }
+                    });
+                });
+            })
+
+        $(document).ready(function () {
+            $('#action').on('change', function () {
+                if (this.value == '1') {
+                    $("#provide").show();
+                    $("#orderother").hide();
+                } else {
+                    $("#provide").hide();
+                    $("#orderother").show();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#orderother").hide();
+
+        });
+
+        $(document).ready(function () {
+
+            $("#biz").hide();
+            $("#res").hide();
+        });
+
+
+
+
+        $(document).ready(function () {
+            $('#pack').on('change', function () {
+                if (this.value == 'RES') {
+                    $("#res").show();
+                    $("#biz").hide();
+                }
+                if (this.value == 'BIZZ') {
+                    $("#res").hide();
+                    $("#biz").show();
+                }
+            });
+        });
+
+        $("#more").click(
+            function () {
+                var newBloc = $(".adressBloc").eq(0).clone();
+                newBloc.find("input").val("");
+                spc = $("<br><br>");
+                deleteBtn = $("<input />").addClass('delete').attr("type",
+                    "button").val("Remove");
+                newBloc.append(deleteBtn);
+                newBloc.append(spc);
+                $(".adressBloc").last().after(newBloc);
+            });
+
+        $("#adds").on("click", ".delete", function () {
+            $(this).parent().remove();
+        });
+
+        $("#moore").click(
+            function () {
+                var newBloc = $(".Addrb").eq(0).clone();
+                newBloc.find("input").val("");
+                spc = $("<br>");
+
+                newBloc.append(spc);
+                $(".Addrb").last().after(newBloc);
+            });
+
+
+
+        function warnadddecoder() {
+            window.alert("You have added additional decoder")
+        }
+
+
+        $(document).ready(function () {
+            var x = document.getElementById("mobilecount").value;
+            document.getElementById("mccount").innerHTML = x;
+
+        });
+
+        $(document).ready(function () {
+            $('#mobilecount').on('change', function () {
+                var x = document.getElementById("mobilecount").value;
+                document.getElementById("mccount").innerHTML = x;
+            })
+        });
+
+
+        $(document).ready(function () {
+            $('.mob1c1').hide();
+
+        });
+
+
+        $("#mobilecount").change(function () {
+            if ($(this).attr('name') == 'mob') {
+                var number = $(this).val();
+
+                $('.mob1c1').hide().slice(0, number).show();
+            }
+        });
+
+
+        function ckChange(ckType) {
+            var ckName = document.getElementsByName(ckType.name);
+            var checked = document.getElementById(ckType.id);
+
+            if (checked.checked) {
+                for (var i = 0; i < ckName.length; i++) {
+
+                    if (!ckName[i].checked) {
+                        ckName[i].disabled = true;
+                    } else {
+                        ckName[i].disabled = false;
+                    }
+                }
+            } else {
+                for (var i = 0; i < ckName.length; i++) {
+                    ckName[i].disabled = false;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
