@@ -87,15 +87,25 @@
                     <label for="usr">Name</label> <input type="text" class="form-control" name="name" required
                         placeholder="Enter full name"><br>
                     <label for="email">Email</label> <input type="email" class="form-control" name="email" required
-                        placeholder="Enter Email"><br>
+                        placeholder="Enter Email id"><br>
                     <label for="email">Mobile Number</label> <input type="number" pattern="[0-9]" class="form-control"
-                        name="mobi" required placeholder="Enter Email"><br>
+                        name="mobi" required placeholder="Enter Mobile Number"><br>
                     <label for="psw">Password</label> <input type="password"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" id="pass" required
                         placeholder="Enter password"><br>
                     <label for="psw">Confirm Password</label> <input type="password"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" id="pass1" required
-                        placeholder="Enter password"><br>
+                        placeholder="Enter password"><br>          
+                    <!-- <input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
+ -->
+                    Would you like to attach you CV? <a href="" id="resume_link">Click here</a><input type="file"
+                        id="resume" style="visibility: hidden">
+                    <br>
+
+
+
                     <button class="btn pull-left" type="submit">Sign Up</button>
                     <br><br>
                     <p> Already have account ??? <a href="index.html">Sign IN</a> </p>
@@ -110,7 +120,17 @@
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
         </a><br><br>
-        <p>This is footer part <a href="#" data-toggle="tooltip" title="Visit w3schools">Click Me</a></p>
+
+      
+        <p>Copyright © 2019 The Jobhub Company</p>
+            <p>
+                <a href="#">About</a> -
+                <a href="#">Privacy Policy</a> -
+                <a href="#">Contact Us</a>
+            </p>
+       
+
+       
     </footer>
 
     <script>
@@ -142,6 +162,24 @@
                 } // End if
             });
         })
+
+
+        var myfile = "";
+
+        $('#resume_link').click(function (e) {
+            e.preventDefault();
+            $('#resume').trigger('click');
+        });
+
+        $('#resume').on('change', function () {
+            myfile = $(this).val();
+            var ext = myfile.split('.').pop();
+            if (ext == "pdf" || ext == "docx" || ext == "doc") {
+                alert(ext);
+            } else {
+                alert(ext);
+            }
+        });
     </script>
 </body>
 
